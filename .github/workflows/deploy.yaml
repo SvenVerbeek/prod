@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
-      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin ${{ secrets.DOCKER_PASSWORD }} # --password-stdin
+      - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} # --password-stdin
       - run: docker build -t svenverbeek/react-test -f dockerfile.dev .
       - run: docker run -e CI=true svenverbeek/react-test npm test
  
